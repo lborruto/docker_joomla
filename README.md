@@ -5,7 +5,7 @@ Use `docker-compose build` and `docker-compose up` for debugging.
 
 Then use `docker-compose up -d` to run in background.
 
-Then go to `http://localhost/administrator` (or the ip of the virtual machine) and log in into Joomla :
+You should be able to get to `http://localhost/administrator` (or the ip of the virtual machine) and log in into Joomla :
 
 user: admin
 pass: secret

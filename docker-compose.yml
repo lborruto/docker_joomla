@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+  php-fpm:
+    build:
+      context: ./php-fpm
+    volumes:
+      - ./src:/var/www/html
+      - ./joomla_logs/php:/var/log/
+    restart: always
+
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ./src:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/sites/:/etc/nginx/sites-available
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+      - ./joomla_logs/nginx:/var/log/nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always 
+
+  database:
+    build:
+      context: ./database
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=docker
+    volumes:
+      - ./database/mysql:/var/lib/mysql
+      - ./database/data.sql:/docker-entrypoint-initdb.d/data.sql
+      - ./joomla_logs/mysql:/var/log/
+
+#env variable are by default, we should change that in a normal case
+
+  joomla:
+    image: joomla
+    restart: always
+    links:
+      - database
+    environment:
+      JOOMLA_DB_HOST: database
+      JOOMLA_DB_PASSWORD: docker
+    volumes:
+      - ./src:/var/www/html
+      - ./joomla_logs/joomla:/var/www/html/joomla/logs

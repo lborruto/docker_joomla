@@ -1,0 +1,6 @@
+#mariadb:latest is already running on Debian (buster):
+FROM mariadb:latest
+
+CMD ["mysqld"]
+
+EXPOSE 3306

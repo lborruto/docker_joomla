@@ -1,0 +1,6 @@
+#nginx:latest is already runing on debian (buster):
+FROM nginx:latest
+
+CMD ["nginx"]
+
+EXPOSE 80 443

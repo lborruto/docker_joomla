@@ -1,0 +1,10 @@
+#requirement for Joomla is php 7.3+ and Mr Zarouali is to use debian (buster) based image:
+FROM php:7.3.29-fpm-buster
+
+RUN docker-php-ext-install pdo_mysql
+
+#pdo extension if for the fpm service to works properly
+
+CMD ["php-fpm"]
+
+EXPOSE 9000

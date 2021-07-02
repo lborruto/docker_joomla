@@ -1,4 +1,4 @@
-Please make sure to fix the permissions issues with `chmod o+rx *` on the docker folder.
+Please make sure to fix the permissions issues with `chmod o+rx *` to all folders.
 ----------------------------------------------------------------------------------------------------------------------
 
 Use `docker-compose build` and `docker-compose up` for debugging.

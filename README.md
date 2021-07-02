@@ -1,4 +1,3 @@
-----------------------------------------------------------------------------------------------------------------------
 Please make sure to fix the permissions issues with `chmod o+rx *` on the docker folder.
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -10,6 +9,7 @@ Then go to `http://localhost/administrator` (or the ip of the virtual machine) a
 
 user: admin
 pass: secret
+
 ----------------------------------------------------------------------------------------------------------------------
 
 `/database` contain the dockerfile for MariaDB, `/database/mysql` contain all the databases
@@ -21,4 +21,5 @@ pass: secret
 `/joomla_logs` contain all the logs file for all of the containers
 
 `/src` is the equivalent of `/var/www/html` for Nginx and Joomla
+
 ----------------------------------------------------------------------------------------------------------------------
